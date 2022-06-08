@@ -1,0 +1,35 @@
+body{
+
+    background-color:#B3E5FC;
+    border-radius: 10px;
+
+}
+
+h4 {
+    font-size: 40px;
+}
+
+.user_name {
+    font-size: 30px;
+}
+
+.card{
+  width: 600px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+#send_button {
+    background: #B3E5FC;
+    color: black;
+    border: #B3E5FC;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#footer_main {
+    background-color: deepskyblue;
+}
+/*html, body {margin: 0; height: 100%; overflow-x: hidden}*/
+

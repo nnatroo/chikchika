@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    {% block head_content %} {% endblock %}
+    <link href="/static/styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <link rel = "icon" href ="/static/images/title_icon.png" type = "image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a href="/feed" class="navbar-brand">Webby</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="/feed" class="nav-item nav-link active">Feed</a>
+                    <a href="/profile" class="nav-item nav-link active">Profile</a>
+                    <a href="/post" class="nav-item nav-link active">Post</a>
+
+{#                    <div class="nav-item dropdown">#}
+{#                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Messages</a>#}
+{#                        <div class="dropdown-menu">#}
+{#                            <a href="#" class="dropdown-item">Inbox</a>#}
+{#                            <a href="#" class="dropdown-item">Sent</a>#}
+{#                            <a href="#" class="dropdown-item">Drafts</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>#}
+                </div>
+                <div class="navbar-nav ms-auto">
+                    {% if current_temp is defined %}
+                        <a id="temp" class="nav-item nav-link active">Temp : {{ current_temp }} °C</a>
+                    {% endif %}
+                    <a href="#" id="liveToastBtn" class="nav-item nav-link active">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <text>Webby</text>
+          <strong class="me-auto"> </strong>
+{#          <small>{{ current_time }}</small>#}
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Are you sure you want to log out ?
+            <br>
+            <br>
+            <a href="/logout" style="background: darkred" type="button" class="btn btn-primary btn-sm">I`m sure</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+          toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+
+            toast.show()
+          })
+        }
+    </script>
+    {% block content %} {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

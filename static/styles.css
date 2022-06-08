@@ -1,0 +1,75 @@
+.header_title {
+    color: rgb(13,110,253);
+    font-family: Apex;
+    margin-left: 60px;
+    margin-top: 15px;
+
+}
+.vh-100 {
+    background-image: url("/static/images/background.jpg");
+    background-position: center;
+}
+
+.validation_msg {
+    color: red;
+    font-weight: 500;
+}
+
+.warning_symb {
+    color: darkred;
+}
+
+.password_valid {
+    color: darkred;
+}
+.navbar-brand {
+    font-size: 30px;
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: bold;
+    text-shadow: #ffffff 1px 2px 2px;
+    letter-spacing: 5px;
+    margin-right: 40px;
+    transition: all 0.4s;
+}
+
+.navbar-brand:hover {
+    text-shadow: #ffffff 2px 2px 4px;
+    color: dodgerblue;
+}
+
+.nav-item {
+    font-size: 22px;
+    font-family: 'Abel', sans-serif;
+    animation-iteration-count: infinite;
+    transition: all 0.4s;
+    margin-right: 15px;
+}
+
+.nav-item:hover {
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+.nav-item:active{
+    color: red;
+}
+
+#liveToastBtn{
+    color: white;
+    transition: all 0.4s;
+}
+
+#liveToastBtn:hover{
+    color: darkred;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: #ffffff 2px 2px 4px;
+
+}
+
+#temp {
+    margin-right: 40px;
+    animation: none;
+    margin-top: 2px;
+}

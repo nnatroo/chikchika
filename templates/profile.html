@@ -1,0 +1,31 @@
+{% extends "base_profile.html" %}
+
+{% block title %} Profile - Webby {% endblock %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="/static/profile_card.css">
+{% endblock %}
+
+{% block content %}
+    <span class="loader"><span class="loader-inner"></span></span>
+{#    <h1>Profile - {{ session['email'] }}</h1>#}
+    <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="ml-3 w-100">
+                   <h4 class="mb-0 mt-0">Email : {{ session['email'] }}</h4>
+                    <br>
+                   <span class="user_name">Username : {{ user_name }} </span>
+                    <br>
+                    <br>
+{#                   <div class="button mt-2 d-flex flex-row align-items-center">#}
+{#                    <button class="btn btn-sm btn-outline-primary w-100">Chat</button>#}
+{#                    <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>#}
+{#                   </div>#}
+                </div>
+                </div>
+            </div>
+         </div>
+
+
+{% endblock %}
+
