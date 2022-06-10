@@ -19,7 +19,7 @@ class User_data(db.Model):
     password = db.Column(db.String(30), nullable=False)
 
     def __str__(self):
-        return f'{self.id}, {self.username}, {self.email}, {self.password}'
+        return f'{self.id}, {self.username}, {self.email}, {self.password}, {self.gender}, {self.date}'
 
 
 class Post_data(db.Model):
@@ -33,7 +33,7 @@ class Post_data(db.Model):
         return f'{self.id}, {self.username}, {self.email}, {self.tweet_text}, {self.time}'
 
 
-# db.create_all()
+db.create_all()
 
 
 # all_user = User_data.query.filter_by(email='natroshvilI@gmail.com').first()
@@ -74,7 +74,10 @@ def profile():
     if "email" in session:
         user_info = User_data.query.filter_by(email=session['email']).first()
         user_name = user_info.username
-        return render_template('profile.html', user_name=user_name)
+        gender = user_info.gender
+        date = user_info.date
+        # print(user_info.gender)
+        return render_template('profile.html', user_name=user_name, gender=gender, date=date)
     else:
         error_type = 'Session key not found !'
         return render_template('error_page.html', error_type=error_type)
@@ -99,7 +102,8 @@ def register():
                 flash("Email already exists, Try again!")
                 return render_template('register.html')
             else:
-                new_user = User_data(username=username, email=email, password=password)
+                new_user = User_data(username=username, email=email, password=password,
+                                     gender=gender, date=date)
                 db.session.add(new_user)
                 db.session.commit()
                 # login side
