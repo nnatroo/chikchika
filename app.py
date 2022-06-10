@@ -17,6 +17,8 @@ class User_data(db.Model):
     username = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(30), nullable=False)
     password = db.Column(db.String(30), nullable=False)
+    gender = db.Column(db.String(30), nullable=False)
+    date = db.Column(db.String(30), nullable=False)
 
     def __str__(self):
         return f'{self.id}, {self.username}, {self.email}, {self.password}, {self.gender}, {self.date}'
@@ -89,7 +91,10 @@ def register():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        if username == "" or email == '' or password == '':
+        gender = str(request.form['gender'])
+        date = str(request.form['date'])
+        if username == "" or email == '' or password == ''\
+                or gender == '' or date == '':
             flash("Please enter all fields!")
             return render_template('register.html')
         elif len(password) <= 8:
