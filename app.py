@@ -35,7 +35,7 @@ class Post_data(db.Model):
         return f'{self.id}, {self.username}, {self.email}, {self.tweet_text}, {self.time}'
 
 
-db.create_all()
+# db.create_all()
 
 
 # all_user = User_data.query.filter_by(email='natroshvilI@gmail.com').first()
@@ -93,7 +93,7 @@ def register():
         password = request.form['password']
         gender = str(request.form['gender'])
         date = str(request.form['date'])
-        if username == "" or email == '' or password == ''\
+        if username == "" or email == '' or password == '' \
                 or gender == '' or date == '':
             flash("Please enter all fields!")
             return render_template('register.html')
@@ -202,6 +202,15 @@ def edit_profile():
         abort(404)
 
 
+@app.route('/<visit_profile>')
+def user(visit_profile):
+    # print(visit_profile)
+    guest_profile = User_data.query.filter_by(email=visit_profile).first()
+    username = guest_profile.username
+    gender = guest_profile.gender
+    birthdate = guest_profile.date
+    return render_template('visit_profile.html', username=username,
+                           gender=gender, birthdate=birthdate)
 
 
 @app.errorhandler(404)

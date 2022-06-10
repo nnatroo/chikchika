@@ -57,6 +57,7 @@
 {#                    <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>#}
                 </div>
                 <div class="navbar-nav ms-auto">
+                <h3 style="margin-top: 5px" class="nav-item nav-link active navbar-nav ms-auto">{{ session["email"] }}</h3>
                     {% if current_temp is defined %}
                         <a id="temp" class="nav-item nav-link active">Temp : {{ current_temp }} °C</a>
                     {% endif %}
