@@ -1,6 +1,6 @@
 {% extends "base_profile.html" %}
 
-{% block title %} Profile - Webby {% endblock %}
+{% block title %} Profile - Chikchika {% endblock %}
 
 {% block head_content %}
     <link rel="stylesheet" href="/static/profile_card.css">
@@ -19,7 +19,10 @@
                     <br>
 {#                   <div class="button mt-2 d-flex flex-row align-items-center">#}
 {#                    <button class="btn btn-sm btn-outline-primary w-100">Chat</button>#}
-{#                    <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>#}
+                    <form method="post">
+                        <a href="/edit_profile" name="edit_profile_button" class="btn btn-sm btn-primary w-100 ml-2">Edit Profile</a>
+                    </form>
+
 {#                   </div>#}
                 </div>
                 </div>

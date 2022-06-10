@@ -1,6 +1,6 @@
 {% extends "base_profile.html" %}
 
-{% block title %} Feed - Webby {% endblock %}
+{% block title %} Feed - Chikchika {% endblock %}
 
 {% block head_content %}
     <link rel="stylesheet" href="/static/profile_card.css">
@@ -18,18 +18,23 @@
                           <div class="g-mb-15">
                             <h5 class="h5 g-color-gray-dark-v1 mb-0">{{ post.username}}</h5>
                             <span class="g-color-gray-dark-v4 g-font-size-12">{{ post.email}}</span>
+                              	&#183;
                             <span class="g-color-gray-dark-v4 g-font-size-12">{{ post.time}}</span>
                           </div>
-
                           <p>{{ post.tweet_text }}</p>
                             <hr>
                         </div>
                     </div>
                 </div>
-
             {% endfor %}
         </div>
 
     </div>
-
+<script>
+    $(document).ready(function () {
+              if (!$.browser.webkit) {
+                  $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
+              }
+          });
+</script>
 {% endblock %}

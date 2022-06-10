@@ -1,0 +1,54 @@
+{% extends "base_profile.html" %}
+
+{% block title %} Edit Profile - Chikchika {% endblock %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="/static/profile_card.css">
+{% endblock %}
+
+{% block content %}
+    <center>
+{#    action="/edit_profile/{{ username_to_update.id }}"#}
+        <form  method="post" style="width: 40%;
+                     margin-top: 140px">
+          <H1 style="margin-bottom: 50px">Edit profile info</H1>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example1">Username</label>
+              <input name="update_name"   id="form2Example1" class="form-control" placeholder="Enter New Username" />
+
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example2">Password</label>
+            <input name="update_pass" type="password" id="form2Example2" class="form-control" placeholder="Enter New password" />
+
+               {% with m = get_flashed_messages(with_categories=true) %}
+                {% for cat, mesi in m %}
+                    <span class="warning_symb">
+                        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
+                            </path>
+                        </svg>
+                    </span>
+                    <p class="error">{{mesi}}</p>
+                {% endfor %}
+            {% endwith %}
+
+
+          </div>
+
+
+
+          <!-- Submit button -->
+          <button style="margin-top: 40px" type="submit" class="btn btn-primary btn-block mb-4">Save info</button>
+
+
+
+        </form>
+    </center>
+
+{% endblock %}
+
+

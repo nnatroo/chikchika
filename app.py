@@ -3,8 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
 import requests
-import socket
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Gz9RWw4LDT'
@@ -82,7 +80,6 @@ def profile():
         return render_template('error_page.html', error_type=error_type)
 
 
-
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -97,7 +94,7 @@ def register():
             return render_template('register.html')
         else:
             register_user = User_data.query.filter_by(email=email).first()
-            print(register_user)
+            # print(register_user)
             if register_user is not None:
                 flash("Email already exists, Try again!")
                 return render_template('register.html')
@@ -145,6 +142,7 @@ def post():
             else:
                 # print(tweet_text)
                 user_info = User_data.query.filter_by(email=session['email']).first()
+
                 user_name = user_info.username
                 now = datetime.now()
                 current_time = now.strftime("%H:%M")
@@ -166,6 +164,35 @@ def logout():
         return redirect(url_for("home_page"))
     else:
         abort(404)
+
+
+@app.route('/edit_profile', methods=['POST', 'GET'])
+def edit_profile():
+    if "email" in session:
+        if request.method == 'POST':
+            user_input = request.form['update_name']
+            pass_input = request.form['update_pass']
+            if user_input == "" and pass_input == "":
+                flash('You cant save clear boxes!')
+                return render_template('edit_profile.html')
+            elif user_input != '' and pass_input == '':
+                old_user_info = User_data.query.filter_by(email=session['email']).first()
+                old_user_info.username = user_input
+                db.session.commit()
+                return redirect(url_for('profile'))
+            elif user_input == '' and pass_input != '':
+                old_user_info = User_data.query.filter_by(email=session['email']).first()
+                old_user_info.password = pass_input
+                db.session.commit()
+                return redirect(url_for('profile'))
+            else:
+                pass
+        else:
+            return render_template('edit_profile.html')
+    else:
+        abort(404)
+
+
 
 
 @app.errorhandler(404)
