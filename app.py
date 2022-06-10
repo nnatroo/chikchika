@@ -202,6 +202,7 @@ def edit_profile():
         abort(404)
 
 
+
 @app.route('/<visit_profile>')
 def user(visit_profile):
     # print(visit_profile)
