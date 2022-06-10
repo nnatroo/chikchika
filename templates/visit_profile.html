@@ -1,0 +1,36 @@
+{% extends "base_profile.html" %}
+
+{% block title %} Profile - Chikchika {% endblock %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="/static/profile_card.css">
+{% endblock %}
+
+{% block content %}
+    <span class="loader"><span class="loader-inner"></span></span>
+{#    <h1>Profile - {{ session['email'] }}</h1>#}
+    <div class="container mt-5 d-flex justify-content-center">
+            <div class="card p-3">
+                <div class="ml-3 w-100">
+                   <span class="user_name">Username : {{ username }} </span>
+                    <br>
+                   <span class="date">Birth Date : {{ birthdate }} </span>
+                    <br>
+                   <span class="gender">Gender : {{ gender }} </span>
+                    <br>
+                    <br>
+{#                   <div class="button mt-2 d-flex flex-row align-items-center">#}
+{#                    <button class="btn btn-sm btn-outline-primary w-100">Chat</button>#}
+                    <form method="post">
+                        <a href="/edit_profile" name="edit_profile_button" class="btn btn-sm btn-primary w-100 ml-2">Edit Profile</a>
+                    </form>
+
+{#                   </div>#}
+                </div>
+                </div>
+            </div>
+         </div>
+
+
+{% endblock %}
+
