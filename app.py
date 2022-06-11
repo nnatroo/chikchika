@@ -38,7 +38,7 @@ class Post_data(db.Model):
 # db.create_all()
 
 
-# all_user = User_data.query.filter_by(email='natroshvilI@gmail.com').first()
+# all_user = User_data.query.filter_by(email='test@gmail.com').first()
 # print(all_user)
 # print(all_user.username)
 # for each in all_user:
