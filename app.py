@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash, abort
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import requests
 
@@ -153,7 +153,9 @@ def post():
                 user_info = User_data.query.filter_by(email=session['email']).first()
 
                 user_name = user_info.username
-                now = datetime.now()
+                hours = 4
+                hours_added = timedelta(hours = hours)
+                now = datetime.now() + hours_added
                 current_time = now.strftime("%H:%M")
                 new_post = Post_data(username=user_name, email=session['email'],
                                      tweet_text=tweet_text, time=current_time)

@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <title>{% block title %} Site {% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
     <link href="/static/styles.css" rel="stylesheet">
     <link rel = "icon" href ="/static/images/title_icon.png" type = "image/x-icon">
     {% block css %} {% endblock %}
 </head>
 <body class="base_body">
-    <div style="text-align: center;"><h1 class="header_title">Chikhika</h1></div>
+    <div style="text-align: center;">
+        <img style="width: 40px; display: inline-block; margin-right: 15px; margin-bottom: 18px" src="/static/images/title_icon.png">
+        <h1 style="display: inline-block; margin: 0" class="header_title">Chikchika</h1>
+    </div>
     {% block content %} Content {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 

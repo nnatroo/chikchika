@@ -2,3 +2,14 @@
     margin-top: 20px;
     margin-left: 25%;
 }
+.h5 {
+    transition: all 1s;
+}
+.h5:hover{
+    /*font-weight: bold;*/
+    /*font-size: 22px;*/
+    /*color: #ffffff;*/
+    color: rgb(13,110,253);
+    text-shadow: white 1px 1px 1px ;
+    letter-spacing: 1px;
+}

@@ -1,7 +1,6 @@
 .header_title {
     color: rgb(13,110,253);
-    font-family: Apex;
-    margin-left: 60px;
+    font-family: 'Dosis', sans-serif;    margin-left: 60px;
     margin-top: 15px;
 
 }
@@ -31,6 +30,15 @@
     letter-spacing: 5px;
     margin-right: 50px;
     transition: all 0.4s;
+}
+.login_wallpaper{
+    transition: all 2s;
+}
+
+.login_wallpaper:hover{
+    width: 40%;
+    opacity: 70%;
+
 }
 
 .navbar-brand:hover {
