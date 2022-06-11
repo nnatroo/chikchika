@@ -1,13 +1,17 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash, abort
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
 import json
 import requests
+
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Gz9RWw4LDT'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app_data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 db = SQLAlchemy(app)
 
@@ -57,14 +61,17 @@ def home_page():
                 flash('Enter email and password !', 'validation_msg')
                 return render_template('index.html')
             else:
-                login_user = User_data.query.filter_by(email=email, password=password).first()
-                print(login_user)
+                login_user = User_data.query.filter_by(email=email).first()
+                # print(login_user)
                 if login_user is None:
                     flash('Couldn\'t find your account, wrong email or password, Try again ! ', 'validation_msg')
                     return render_template('index.html')
-                else:
+                elif check_password_hash(login_user.password, password):
                     session['email'] = email
                     return redirect(url_for('feed'))
+                else:
+                    flash('Incorrect password !')
+                    return render_template('index.html')
         else:
             return render_template('index.html')
     else:
@@ -107,7 +114,7 @@ def register():
                 flash("Email already exists, Try again!")
                 return render_template('register.html')
             else:
-                new_user = User_data(username=username, email=email, password=password,
+                new_user = User_data(username=username, email=email, password=generate_password_hash(password).decode('utf-8'),
                                      gender=gender, date=date)
                 db.session.add(new_user)
                 db.session.commit()
@@ -193,7 +200,7 @@ def edit_profile():
                 return redirect(url_for('profile'))
             elif user_input == '' and pass_input != '':
                 old_user_info = User_data.query.filter_by(email=session['email']).first()
-                old_user_info.password = pass_input
+                old_user_info.password = generate_password_hash(pass_input).decode('utf-8')
                 db.session.commit()
                 return redirect(url_for('profile'))
             else:
